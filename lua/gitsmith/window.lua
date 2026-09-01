@@ -63,9 +63,8 @@ local function create_window(config)
     end
   end
 
+  vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { buffer = buf, silent = true })
   vim.keymap.set("n", "q", close, { buffer = buf, silent = true })
-  vim.keymap.set("n", "<Esc>", close, { buffer = buf, silent = true })
-  vim.keymap.set("t", "<Esc>", close, { buffer = buf, silent = true })
 
   vim.cmd("startinsert")
 
