@@ -57,6 +57,16 @@ local function create_window(config)
     end,
   })
 
+  local function close()
+    if state.win and vim.api.nvim_win_is_valid(state.win) then
+      vim.api.nvim_win_close(state.win, true)
+    end
+  end
+
+  vim.keymap.set("n", "q", close, { buffer = buf, silent = true })
+  vim.keymap.set("n", "<Esc>", close, { buffer = buf, silent = true })
+  vim.keymap.set("t", "<Esc>", close, { buffer = buf, silent = true })
+
   vim.cmd("startinsert")
 
   state.buf = buf
